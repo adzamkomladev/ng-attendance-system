@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyANLtddPQpDR8XZC2_RzeJV4Y-oCrMzhjs',
+    authDomain: 'ng-attendance-system.firebaseapp.com',
+    databaseURL: 'https://ng-attendance-system.firebaseio.com',
+    projectId: 'ng-attendance-system',
+    storageBucket: 'ng-attendance-system.appspot.com',
+    messagingSenderId: '1002707523546'
+  }
 };
 
 /*
