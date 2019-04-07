@@ -1,3 +1,56 @@
-<p>
-  login-form works!
-</p>
+<div
+    id="login-wrapper"
+    class="p-3">
+    <h3 class="text-center mb-5">Sign in</h3>
+    <form
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()">
+        <div
+            class="form-group"
+            [class.has-danger]="hasEmailErros()">
+            <input
+                formControlName="email"
+                type="email"
+                name="email"
+                id="email"
+                class="form-control form-control-sm"
+                [class.is-invalid]="hasEmailErros()"
+                placeholder="Email address...">
+            <div
+                *ngFor="let message of getEmailValidationMessages()"
+                class="invalid-feedback">
+                {{message}}
+            </div>
+            <!-- aria-describedby="emailHelp" <small id="emailHelp" class="text-muted">Your Staff ID</small> -->
+        </div>
+        <div
+            class="form-group"
+            [class.has-danger]="hasPasswordErros()">
+            <input
+                formControlName="password"
+                type="password"
+                name="password"
+                id="password"
+                class="form-control form-control-sm"
+                [class.is-invalid]="hasPasswordErros()"
+                placeholder="Password...">
+            <div
+                *ngFor="let message of getPasswordValidationMessages()"
+                class="invalid-feedback">
+                {{message}}
+            </div>
+            <!-- aria-describedby="passwordHelp"<small id="passwordHelp" class="text-muted">Your password</small> -->
+        </div>
+
+        <div class="form-group mt-5">
+            <button
+                [disabled]="form.invalid"
+                type="submit"
+                id="submitButton"
+                class="btn btn-success btn-lg btn-block font-weight-bold text-uppercase">
+                Login
+            </button>
+        </div>
+        <app-loading *ngIf="showLoading"></app-loading>
+    </form>
+</div>

@@ -1,0 +1,12 @@
+.wrapper {
+  background-color: #2f973e;
+  height: 100vh;
+}
+
+app-login-form {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

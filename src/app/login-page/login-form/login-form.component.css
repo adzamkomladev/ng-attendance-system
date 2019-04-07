@@ -1,0 +1,14 @@
+#login-wrapper {
+  background-color: white;
+  width: 300px;
+  height: 350px;
+  border-radius: 45px;
+  box-shadow: 2px 6px 59px -5px rgba(0, 0, 0, 0.45);
+  -webkit-box-shadow: 2px 6px 59px -5px rgba(0, 0, 0, 0.45);
+  -moz-box-shadow: 2px 6px 59px -5px rgba(0, 0, 0, 0.45);
+}
+
+input {
+  border: 1px solid rgb(128, 126, 126);
+  background-color: whitesmoke;
+}
