@@ -1,3 +1,32 @@
-<p>
-  invigilation-details works!
-</p>
+<div class="row my-5">
+    <div class="col-md-8">
+        <div class="card text-dark mb-3">
+            <div class="card-header bg-success text-white">Registered students</div>
+            <div class="card-body">
+                <table class="table ">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Index Number</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let student of students$ | async">
+                            <td scope="row">
+                                {{ student.lastName + ' ' + student.firstName }}
+                            </td>
+                            <td>{{ student.indexNumber }}</td>
+                            <td>
+                                <button class="btn btn-dark btn-sm">Present</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <app-peek-invigilation [invigilation]="invigilation$ | async"></app-peek-invigilation>
+    </div>
+</div>

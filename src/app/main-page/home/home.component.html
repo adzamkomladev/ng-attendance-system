@@ -5,15 +5,21 @@
             <div class="card-body">
                 <div class="list-group">
                     <a
-                        *ngFor="let i of [1,2,3,4]"
-                        [routerLink]="['invigilations', i]"
+                        *ngFor="let invigilation of invigilations$ | async"
+                        [routerLink]="['invigilations', invigilation?.key]"
                         class="list-group-item list-group-item-action flex-column align-items-start mb-3">
                         <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">Apr 2, 2019</h5>
-                            <small>Number of students: 50</small>
+                            <h5 class="mb-1">
+                                {{ invigilation.from.toDate().toDateString() }}
+                            </h5>
+                            <small>
+                                Number of students: {{ invigilation.students.length }}
+                            </small>
                         </div>
-                        <p class="mb-1">MC 2</p>
-                        <small>2:00 PM</small>
+                        <p class="mb-1">{{ invigilation.classroom }}</p>
+                        <small>
+                            {{invigilation.from.toDate().toLocaleTimeString()}}
+                        </small>
                     </a>
                 </div>
             </div>
@@ -21,23 +27,6 @@
 
     </div>
     <div class="col-md-5">
-        <div
-            id="next-invigilation"
-            class="card">
-            <div class="card-body">
-                <h4 class="card-title ">Next invigilation</h4>
-                <h6 class="card-subtitle mb-2 text-muted">Apr 2, 2019</h6>
-                <p class="card-text">Class: MC 2</p>
-                <p class="card-text">Time: 2:00 PM</p>
-                <p class="card-text">Duration: 3 hours</p>
-                <p class="card-text">Subject: Information Theory</p>
-                <p class="card-text">Number of students: 50</p>
-                <a
-                    href="#"
-                    class="card-link">
-                    Details
-                </a>
-            </div>
-        </div>
+        <app-peek-invigilation [invigilation]="nextInvigilation$ | async"></app-peek-invigilation>
     </div>
 </div>

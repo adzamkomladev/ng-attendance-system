@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+
+import { AngularFireAuth } from '@angular/fire/auth';
 
 export interface User {
   uid: string;

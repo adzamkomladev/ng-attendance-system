@@ -18,12 +18,15 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { HomeComponent } from './main-page/home/home.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { LoadingComponent } from './shared/components/loading/loading.component';
-
-import { AuthService } from './shared/services/auth.service';
-import { AuthGuard } from './shared/guards/auth.guard';
 import { ProfileComponent } from './main-page/profile/profile.component';
 import { CurrentInvigilationComponent } from './main-page/current-invigilation/current-invigilation.component';
 import { InvigilationDetailsComponent } from './main-page/invigilation-details/invigilation-details.component';
+
+import { AuthService } from './shared/services/auth.service';
+import { AuthGuard } from './shared/guards/auth.guard';
+import { LecturerService } from './shared/services/lecturer.service';
+import { InvigilationService } from './shared/services/invigilation.service';
+import { PeekInvigilationComponent } from './main-page/peek-invigilation/peek-invigilation.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginPageComponent, pathMatch: 'full' },
@@ -36,7 +39,7 @@ const appRoutes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'now', component: CurrentInvigilationComponent },
       { path: 'profile', component: ProfileComponent },
-      { path: 'invigilations/:id', component: InvigilationDetailsComponent },
+      { path: 'invigilations/:key', component: InvigilationDetailsComponent },
     ]
   }
 ];
@@ -52,7 +55,8 @@ const appRoutes: Routes = [
     LoadingComponent,
     ProfileComponent,
     CurrentInvigilationComponent,
-    InvigilationDetailsComponent
+    InvigilationDetailsComponent,
+    PeekInvigilationComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +68,7 @@ const appRoutes: Routes = [
     AngularFireAuthModule,
     FontAwesomeModule
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, LecturerService, InvigilationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
