@@ -27,6 +27,8 @@ import { AuthGuard } from './shared/guards/auth.guard';
 import { LecturerService } from './shared/services/lecturer.service';
 import { InvigilationService } from './shared/services/invigilation.service';
 import { PeekInvigilationComponent } from './main-page/peek-invigilation/peek-invigilation.component';
+import { TimerComponent } from './shared/components/timer/timer.component';
+import { CountdownPipe } from './shared/pipes/countdown.pipe';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginPageComponent, pathMatch: 'full' },
@@ -56,7 +58,9 @@ const appRoutes: Routes = [
     ProfileComponent,
     CurrentInvigilationComponent,
     InvigilationDetailsComponent,
-    PeekInvigilationComponent
+    PeekInvigilationComponent,
+    TimerComponent,
+    CountdownPipe
   ],
   imports: [
     BrowserModule,

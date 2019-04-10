@@ -3,30 +3,43 @@
         <div class="card text-dark mb-3">
             <div class="card-header bg-success text-white">Registered students</div>
             <div class="card-body">
-                <table class="table ">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th>Name</th>
-                            <th>Index Number</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let student of students$ | async">
-                            <td scope="row">
-                                {{ student.lastName + ' ' + student.firstName }}
-                            </td>
-                            <td>{{ student.indexNumber }}</td>
-                            <td>
-                                <button class="btn btn-dark btn-sm">Present</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <h2>
+                    <app-timer [invigilation]="invigilation$ | async"></app-timer>
+                </h2>
             </div>
         </div>
+        <h3 class="my-5">All registered students</h3>
+        <table class="table ">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Index Number</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of students$ | async">
+                    <td scope="row">
+                        {{ student.lastName + ' ' + student.firstName }}
+                    </td>
+                    <td>{{ student.indexNumber }}</td>
+                    <td>
+                        <ng-container *ngIf="!attendance?.present.includes(student.key); else elseTemplate">
+                            <button
+                                *ngIf="!attendance?.present.includes(student.key)"
+                                (click)="onClick(student.key)"
+                                class="btn btn-dark btn-sm">
+                                Present
+                            </button>
+                        </ng-container>
+                        <ng-template #elseTemplate>Finished</ng-template>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     <div class="col-md-4">
         <app-peek-invigilation [invigilation]="invigilation$ | async"></app-peek-invigilation>
     </div>
 </div>
+<div class="row"></div>
